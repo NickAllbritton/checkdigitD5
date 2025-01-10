@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "checkdigit.h"
 
 enum class FormError
 {
@@ -121,7 +122,7 @@ int main(int argc, char* argv[])
     }
     /**************************************************************************/
 
-    std::cout << "No errors detected!" << std::endl;
+    std::cout << sigma(6, 4) << std::endl;
 
     return 0;
 }
