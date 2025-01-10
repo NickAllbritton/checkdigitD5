@@ -32,10 +32,10 @@ int sigma(int argument)
 
 int sigma(int exponent, int argument)
 {
-    int prev_result = sigma(argument); // higher than any output of sigma(int)
+    int prev_result = sigma(argument); // apply sigma to the input once
     for(int i = 1; i < exponent; i++)
     {
-        prev_result = sigma(prev_result); // use the previous result if this is not the first calculation
+        prev_result = sigma(prev_result); // apply sigma to the previous result
     }
     return prev_result; // the last result produced is the final result
 }
@@ -57,7 +57,7 @@ int dihedral5(std::vector<int> elements)
             {9, 8, 7, 6, 5, 4, 3, 2, 1, 0}
         };
 
-    // This is commented out because in J. Gallian they are using left to right order of multiplication for this representation....
+    // This is commented out because in J. Gallian text for Abstract Algebra they are using left to right order of multiplication for this representation....
     // Dn groups multiply right to left and are NOT Abelian/commutative
     // std::reverse(elements.begin(), elements.end());
 
