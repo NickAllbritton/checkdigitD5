@@ -122,7 +122,100 @@ int main(int argc, char* argv[])
     }
     /**************************************************************************/
 
-    std::cout << sigma(6, 4) << std::endl;
+    /******************** Convert input to vector of ints *********************/
+    std::vector<int> elements;
+    for(auto c : inputs.at(1))
+    {
+        // TODO: is there a cleaner solution? again, this is ugly
+        int element;
+        switch(c)
+        {
+        case '0':
+            element = 0;
+            break;
+        case '1':
+            element = 1;
+            break;
+        case '2':
+            element = 2;
+            break;
+        case '3':
+            element = 3;
+            break;
+        case '4':
+            element = 4;
+            break;
+        case '5':
+            element = 5;
+            break;
+        case '6':
+            element = 6;
+            break;
+        case '7':
+            element = 7;
+            break;
+        case '8':
+            element = 8;
+            break;
+        case '9':
+            element = 9;
+            break;
+        case 'A':
+            element = 0;
+            break;
+        case 'D':
+            element = 1;
+            break;
+        case 'G':
+            element = 2;
+            break;
+        case 'K':
+            element = 3;
+            break;
+        case 'L':
+            element = 4;
+            break;
+        case 'N':
+            element = 5;
+            break;
+        case 'S':
+            element = 6;
+            break;
+        case 'U':
+            element = 7;
+            break;
+        case 'Y':
+            element = 8;
+            break;
+        case 'Z':
+            element = 9;
+            break;
+        }
+        elements.push_back(element); 
+    }
+    /**************************************************************************/
+
+    /******************** Apply sigma() to every element **********************/
+    for(int i = 0; i < elements.size(); i++)
+    {
+        // except for the check digit, apply sigma to each element of the vector
+        if(i != elements.size() - 1) elements.at(i) = sigma(i + 1, elements.at(i));
+    }
+    /**************************************************************************/
+
+    /******************** Apply check-digit functions now *********************/
+    int result = dihedral5(elements);
+    if(result == 0)
+    {
+        std::cout << "VALID: Serial number has been verified." << std::endl;
+    }
+    else
+    {
+        std::cout << "INVALID: Serial number could not be verified!" << std::endl;
+    }
+    /**************************************************************************/
+
+    
 
     return 0;
 }
